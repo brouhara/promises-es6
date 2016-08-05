@@ -20,35 +20,35 @@ describe('PokemonAPI', function () {
     api = new PokemonAPI();
   });
   
-  xdescribe('.pokemon()', function () {
+  describe('.pokemon()', function () {
     it('throws an error if there is no parameter', function () {
       var expected = 'A Pokemon is required to use this method!';
       return api.pokemon().done().should.be.rejectedWith(expected);
     });
 
-    it('returns an object with the pokemon by name', function () {
+    xit('returns an object with the pokemon by name', function () {
       var expected = expectedResponses.pokemon;
       return api.pokemon('pikachu').done().should.eventually.deep.equal(expected);
     });
 
-    it('returns an object with the pokemon by number', function () {
+    xit('returns an object with the pokemon by number', function () {
       var expected = expectedResponses.pokemon;
       return api.pokemon(25).done().should.eventually.deep.equal(expected);
     });
 
-    it('is case insensitive', function () {
+    xit('is case insensitive', function () {
       var expected = expectedResponses.pokemon;
       return api.pokemon('Pikachu').done().should.eventually.deep.equal(expected);
     });
   });
 
   xdescribe('.done()', function () {
-    it('returns a promise if no callback is passed', function () {
+    xit('returns a promise if no callback is passed', function () {
       var pokePromise = api.pokemon('pikachu').done();
       (pokePromise.constructor).should.equal(Promise);
     });
 
-    it('can take a callback function that operates on the returned promise\'s value', function () {
+    xit('can take a callback function that operates on the returned promise\'s value', function () {
       var callback = function (result) { return 'Go, ' + result.name + '!'; }
       return api.pokemon('pikachu').done(callback).should.eventually.equal('Go, Pikachu!');
     });
